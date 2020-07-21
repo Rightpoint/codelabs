@@ -1,0 +1,110 @@
+body {
+    font-family: system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    display: grid;
+    height: 100vh;
+    grid-template-rows: 70px 1fr auto;
+    padding: 0;
+    margin: 0;
+}
+
+header {
+    background: #fff;
+    border-bottom: 1px solid #e1e3e3;
+}
+
+main {
+    background: lightgray;
+}
+
+footer {
+    background: #000;
+    text-align: center;
+}
+
+svg {
+    width: 100%;
+    max-height: 100%;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    height: 70px;
+    box-shadow: 0 1px rgba(0,0,0,.15);
+}
+
+.navbar__logo-link {
+    margin: 0 -156px 0 0;
+    height: 70px;
+}
+
+.navbar__github {
+    align-self: center;
+}
+
+.navbar__github-link {
+    height: 30px;
+    max-width: 30px;
+}
+
+.banner {
+    background: #fff;
+    padding: 2em 0 2em;
+    margin: 0;
+}
+
+.codelabs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, auto);
+    grid-auto-rows: 175px;
+    grid-auto-flow: column;
+    column-gap: 16px;
+    row-gap: 16px;
+    padding: 16px;
+    justify-content: center;
+}
+
+.codelabs__item {
+    flex-direction: column;
+    background: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    box-shadow: 0 1px rgba(0,0,0,.15);
+    max-width: 330px;
+}
+
+.codelabs__title {
+    color: #212121;
+    flex: 1 0 auto;
+    padding: 16px 16px 0;
+    font-weight: 700;
+}
+
+.codelabs__description {
+    color: #212121;
+    flex: 1 0 auto;
+    padding: 16px;
+}
+
+.footer__container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer__legal {
+    min-height: 1px;
+    padding-right: 8px;
+    padding-left: 8px;
+    font-size: 10px;
+    color: #a5a7a9;
+    line-height: normal;
+    margin: 2em 0;
+}
+
+.site-width {
+    margin: 0 auto;
+    max-width: 1024px;
+    width: 90vw;
+}
