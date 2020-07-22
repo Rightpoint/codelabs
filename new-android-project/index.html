@@ -25,54 +25,107 @@
                   id="new-android-project"
                   title="Rightpoint Android Template"
                   environment="web"
-                  feedback-link="https://github.com/Rightpoint/codelabs/issues">
+                  feedback-link="https://raizlabs.atlassian.net/jira/software/projects/DROID/boards/358">
     
-      <google-codelab-step label="Introduction" duration="0">
-        <p>This codelab will show how to create a new Android project using the <a href="https://github.com/Rightpoint/android-template-v2" target="_blank">Rightpoint Android template</a>. It will also provide some background into what the template provides newly generated projects.</p>
+      <google-codelab-step label="Introduction" duration="1">
+        <p>These days creating a new project in Android Studio isn&#39;t terribly difficult and Studio even provides a number of different starter templates to help get your new project up and running quickly. However, there are various libraries, tools, best practices, etc. that we have built up over several past projects that we want to continue utilizing on future projects.</p>
+<p>We obviously don&#39;t get all of the setup that we want out of the box from the Android Studio wizard which is what led us to build this template project. Not only does it reduce the amount of time spent setting the project up at kick-off, it standardizes how we choose to build Android projects at Rightpoint.</p>
+<p>This codelab will show how to create a new Android project using the <a href="https://github.com/Rightpoint/android-template-v2" target="_blank">Rightpoint Android template</a> and provide some background into what the template provides newly generated projects.</p>
+<h2 class="checklist" is-upgraded>What you&#39;ll learn</h2>
+<ul class="checklist">
+<li>How to use the Android template</li>
+<li>How the Android template benefits newly kicked-off projects</li>
+</ul>
+<h2 is-upgraded>What you&#39;ll do</h2>
+<ul>
+<li>Create a new repository on Github</li>
+<li>Execute various JVM commands on the command line</li>
+<li>Read a module-by-module breakdown of the Android template structure</li>
+</ul>
 
 
       </google-codelab-step>
     
-      <google-codelab-step label="Getting Started" duration="0">
+      <google-codelab-step label="Creating the Repository" duration="2">
         <p>First you want to create a new project on Github using the template. Github provides <a href="https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template" target="_blank">detailed documentation</a> on how to do this so we won&#39;t reiterate it here, however, the simplest way of accomplishing this is just opening <a href="https://github.com/Rightpoint/android-template-v2" target="_blank">version 2 of the Rightpoint Android template</a> and clicking on the <code>Use this template</code> button.</p>
+<p class="image-container"><img alt="Use this template button" src="img/877b1daeb738bac.jpg"></p>
 <aside class="warning"><p>You want to make sure you are using <strong>version 2</strong> of the template as opposed to version 1. Version 1 of the template is out of date and no longer being actively maintained.</p>
 </aside>
 
 
       </google-codelab-step>
     
-      <google-codelab-step label="Verifying the Project" duration="0">
-        <p>You should now have a new project on Github under the <a href="https://github.com/Rightpoint/" target="_blank">Rightpoint organization</a>. Clone this repo onto your machine and open it in Android Studio.</p>
-<p>The repo should contain an <code>android-template-renamer-tool.jar</code> file, however, if it&#39;s missing you can <a href="https://github.com/Rightpoint/android-template-renamer-tool#building-from-source" target="_blank">generate it from source</a>.</p>
-<p>Lastly, make sure to run a Gradle clean command and verify no build errors occur:</p>
+      <google-codelab-step label="Verifying the Project" duration="5">
+        <p>You should now have a new project on Github under the <a href="https://github.com/Rightpoint/" target="_blank">Rightpoint organization</a>. Clone this repo onto your machine and open it in Android Studio:</p>
+<pre><code>git clone ${your-repo}
+</code></pre>
+<p>Now make sure to run a Gradle clean command:</p>
 <pre><code># Windows
 gradle clean
 
 # MacOS/Linux
 ./gradlew clean
 </code></pre>
+<p>If no build errors occur then this command does a couple of things:</p>
+<ul>
+<li>Verifies that the repo can be built and is ready to be modified.</li>
+<li>Removes various build files that could be mangled by the subsequent post-processing step.</li>
+</ul>
 
 
       </google-codelab-step>
     
-      <google-codelab-step label="Renaming the Project" duration="0">
-        <p>As is the project has various setting that make reference to Rightpoint or template and we don&#39;t want to ship a client project with any of that information. We are going to use the <code>android-template-renamer-tool.jar</code> file we mentioned in the previous step to do some post-processing on the project.</p>
-<p>First, run the .jar file on the command line with this command (this requires Java to be installed):</p>
+      <google-codelab-step label="Renaming the Project" duration="7">
+        <p>The template itself has various settings and strings that make reference to Rightpoint or template and we don&#39;t want to ship a client project with any of that so we are going to use the <code>android-template-renamer-tool.jar</code> file to do some post-processing.</p>
+<aside class="warning"><p>The repo should contain an <code>android-template-renamer-tool.jar</code> file, however, if it&#39;s missing you can <a href="https://github.com/Rightpoint/android-template-renamer-tool#building-from-source" target="_blank">generate it from source</a>.</p>
+</aside>
+<p>Run the .jar file on the command line with this command:</p>
 <pre><code>java -jar android-template-renamer-tool.jar
 </code></pre>
-<p>Then, follow the command prompt and enter the following information:</p>
+<aside class="special"><p>In order to run the .jar file you will need Java installed on your machine. We recommend using an <a href="https://adoptopenjdk.net/" target="_blank">OpenJDK implementation</a> (and on MacOS machines <a href="https://github.com/AdoptOpenJDK/homebrew-openjdk" target="_blank">Homebrew can be used to manage JDKs</a>).</p>
+</aside>
+<p>Follow the command prompt and enter the following information:</p>
 <ul>
 <li>The name of the application</li>
 <li>The new package name (usually this is the client&#39;s domain in reverse order, for example: <code>com.rightpoint.*</code>)</li>
 <li>The repo name on GitHub (should match the name of the repo you just created)</li>
 </ul>
 <p>If no issues occurred then the prompt should say <code>Complete</code> once it&#39;s done.</p>
+<aside class="special"><p>Though the <code>android-template-renamer-tool.jar</code> file should no longer make any changes to your project if run again it is best just to delete the file once you are done with it. This ensures no one runs it again by accident and reduces the size of the repo on Github.</p>
+</aside>
+<p>Once the post-processing is complete, rebuild the project using either Android Studio or the following command:</p>
+<pre><code># Windows
+gradle assembleDevelopDebug
+
+# MacOS/Linux
+./gradlew assembleDevelopDebug
+</code></pre>
+<p>If this completes with no errors then your newly created project is all set and ready to go.</p>
 
 
       </google-codelab-step>
     
-      <google-codelab-step label="Additional Notes" duration="0">
-        
+      <google-codelab-step label="Template Features" duration="3">
+        <p>The first thing that might stand out about the template project is all of the directories, modules and files it contains. For someone coming from a single module application this might be a bit intimidating, however, we will break the purpose of all these files. This should hopefully provide some insight into the decisions made when constructing this template.</p>
+<h2 is-upgraded>Opinionated decisions</h2>
+<p>While the template tries to remain unopinionated in certain respects, such as how you might model your data, there are areas where it holds very strong opinions:</p>
+<ul>
+<li><strong>Language:</strong> The project is written in Kotlin programming language. The decision behind to move to Kotlin was done after Google announced that it would be an officially supported language for Android development. There are several benefits to using Kotlin over the Java programming language (too many to list here) but because of this change we use <a href="https://github.com/pinterest/ktlint" target="_blank">ktlint</a> to enforce styling on our Kotlin source files (following the <a href="https://developer.android.com/kotlin/style-guide" target="_blank">Android Kotlin Style Guide</a> in particular).</li>
+<li><strong>Architecture:</strong> The overall structure of the project follows <a href="https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html" target="_blank">clean architecture</a>, in particular, it models its implementation after a <a href="https://github.com/bufferapp/android-clean-architecture-boilerplate" target="_blank">Buffer reference project</a>. The reason for choosing a clean architecture based project structure is to enforce separtion of concerns and improve testability.</li>
+<li><strong>Dependency Injection:</strong> Dependency injection has, historically, been a pattern utilized by applications written in the JVM to help write scalable and testable code. To facilitate dependency injection the template is utilizing <a href="https://developer.android.com/training/dependency-injection/hilt-android" target="_blank">Hilt</a>, which is built on <a href="https://dagger.dev/hilt/" target="_blank">Dagger 2</a>. While Dagger has a reputation of having a steep learning curve, Hilt makes it much more accessible on Android and is <a href="https://developer.android.com/training/dependency-injection#hilt" target="_blank">Google&#39;s recommended library for dependency injection</a>. There are many libraries out there calling themselves dependency injection frameworks but in reality are just <a href="https://www.reddit.com/r/androiddev/comments/d1b4i1/understanding_the_difference_between_di_and_sl/" target="_blank">service locators</a> and we want to avoid using service locators for larger scale projects.</li>
+<li><strong>UI:</strong> Binding a <code>View</code> to an <code>Activity</code> or a <code>Fragment</code> has always included a lot of boilerplate code, especially if you use <code>findViewById()</code>. Our projects have always taken advantage of different view binding libraries to reduce this boilerplate but we have officially shifted over to <a href="https://developer.android.com/topic/libraries/view-binding" target="_blank">View Binding</a> in our template. There are many other solutions for binding views but here are a couple of the more popular ones and the reasons we moved away from them:  <ul>
+<li><strong>KotlinX synthetics:</strong> KotlinX synthetics are part of the Kotlin Android Extensions plugin provided by JetBrains. For a while they were considered a better solution than <code>findViewById()</code>, however they have <a href="https://proandroiddev.com/the-argument-over-kotlin-synthetics-735305dd4ed0" target="_blank">various problems</a> that eventually led to <a href="https://www.reddit.com/r/androiddev/comments/ala9p2/why_kotlinx_synthetic_is_no_longer_a_recommended/" target="_blank">Google to no longer recommending</a> their use in projects.</li>
+<li><strong>Data Binding:</strong> While very similar to View Binding, Data Binding a bit further and actually allows referencing code inside of XML layouts. There have always been arguments against this kind of functionality but the problems with it have manifested themselves on projects in the form of incomprehensible spaghetti code. That coupled with the fact that Data Binding is using annotation processing underneath the hood (leading to slower build times) were enough for us to move away from the solution.</li>
+</ul>
+</li>
+</ul>
+<h2 is-upgraded>Guidelines</h2>
+<p>This section will discuss a list of guidances that are not necessarily strictly enforced rules. These suggestions are based on previous success but are open to modifications from the Android tech lead on the project:</p>
+<ul>
+<li><strong>Network &amp; Cache:</strong> TODO</li>
+<li><strong>Package Structure:</strong> TODO</li>
+</ul>
+
 
       </google-codelab-step>
     

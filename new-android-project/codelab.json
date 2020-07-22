@@ -3,9 +3,9 @@
   "format": "html",
   "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
-  "updated": "2020-07-19T15:39:30-04:00",
+  "updated": "2020-07-22T10:24:24-04:00",
   "id": "new-android-project",
-  "duration": 0,
+  "duration": 18,
   "title": "Rightpoint Android Template",
   "authors": "Jon Duran",
   "summary": "Create a new Android project using the Rightpoint Android template",
@@ -20,6 +20,6 @@
   "tags": [
     "android"
   ],
-  "feedback": "https://github.com/Rightpoint/codelabs/issues",
+  "feedback": "https://raizlabs.atlassian.net/jira/software/projects/DROID/boards/358",
   "url": "new-android-project"
 }

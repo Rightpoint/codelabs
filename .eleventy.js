@@ -6,24 +6,12 @@ module.exports = function(eleventyConfig) {
         return new CleanCSS({}).minify(code).styles;
     });
 
-    eleventyConfig.addTransform("htmlmin", function(content, outputPath) {
-        if (outputPath.endsWith(".html")) {
-            let minified = htmlmin.minify(content, {
-                useShortDoctype: true,
-                removeComments: true,
-                collapseWhitespace: true
-            });
-            return minified;
-        }
-
-        return content;
-    });
-
     eleventyConfig.setTemplateFormats([
         "md",
         "html",
         "css",
-        "json"
+        "json",
+        "jpg"
     ]);
 
     return {
