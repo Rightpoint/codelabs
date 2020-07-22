@@ -1,5 +1,4 @@
 const CleanCSS = require("clean-css");
-const htmlmin = require("html-minifier");
 
 module.exports = function(eleventyConfig) {
     eleventyConfig.addFilter("cssmin", function(code) {
