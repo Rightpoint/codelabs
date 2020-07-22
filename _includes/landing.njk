@@ -115,7 +115,7 @@
             </div>
             <div class="codelabs site-width">
             {%- for page in collections.all %}
-                <a href="{{ page.url }}" class="codelabs__item">
+                <a href="{{ page.url | url }}" class="codelabs__item">
                     <div class="codelabs__title">{{ page.data.title }}</div>
                     <div class="codelabs__description">{{ page.data.summary }}</div>                    
                 </a>

@@ -18,6 +18,7 @@ module.exports = function(eleventyConfig) {
         htmlTemplateEngine: "njk",
         dir: {
             output: "docs"
-        }
+        },
+        pathPrefix: "/codelabs/"
     };
 };
