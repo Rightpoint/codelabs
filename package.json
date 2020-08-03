@@ -1,0 +1,24 @@
+{
+  "name": "codelabs",
+  "version": "1.0.0",
+  "description": "",
+  "main": ".eleventy.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "build": "bash build_codelab.sh && eleventy --serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rightpoint/codelabs.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://raizlabs.atlassian.net/jira/software/projects/DROID/boards/358"
+  },
+  "homepage": "https://github.com/Rightpoint/codelabs#readme",
+  "dependencies": {
+    "clean-css": "^4.2.3"
+  }
+}
