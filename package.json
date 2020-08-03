@@ -7,7 +7,9 @@
     "doc": "docs"
   },
   "scripts": {
-    "build": "bash build_codelab.sh && eleventy --serve"
+    "clean": "rm -r docs",
+    "build": "bash build_codelab.sh && eleventy",
+    "dev": "bash build_codelab.sh && eleventy --serve"
   },
   "repository": {
     "type": "git",
